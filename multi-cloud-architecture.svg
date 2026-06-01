@@ -1,0 +1,150 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="#888" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <marker id="arrow-aws" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="#FF9900" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <marker id="arrow-azure" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="#0078D4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <marker id="arrow-gcp" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="#4285F4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="800" fill="#0F1117"/>
+
+  <!-- Title -->
+  <text x="600" y="45" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#FFFFFF">Multi-Cloud Terraform Architecture</text>
+  <text x="600" y="70" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#888888">AWS · Azure · GCP — Managed by Terraform</text>
+
+  <!-- ===================== TERRAFORM BOX ===================== -->
+  <rect x="450" y="100" width="300" height="90" rx="12" fill="#2D1B69" stroke="#7B42BC" stroke-width="2"/>
+  <!-- Terraform Logo T -->
+  <rect x="470" y="115" width="40" height="40" rx="6" fill="#7B42BC"/>
+  <text x="490" y="142" text-anchor="middle" font-family="Arial Black, sans-serif" font-size="22" font-weight="900" fill="white">T</text>
+  <text x="580" y="138" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#FFFFFF">Terraform</text>
+  <text x="580" y="158" font-family="Arial, sans-serif" font-size="11" fill="#AFA9EC">main.tf · variables.tf · outputs.tf</text>
+  <text x="580" y="175" font-family="Arial, sans-serif" font-size="11" fill="#AFA9EC">terraform.tfvars · modules/</text>
+
+  <!-- Arrows from Terraform -->
+  <path d="M520 190 L200 290" fill="none" stroke="#FF9900" stroke-width="2" stroke-dasharray="6,3" marker-end="url(#arrow-aws)"/>
+  <path d="M600 190 L600 290" fill="none" stroke="#0078D4" stroke-width="2" stroke-dasharray="6,3" marker-end="url(#arrow-azure)"/>
+  <path d="M680 190 L1000 290" fill="none" stroke="#4285F4" stroke-width="2" stroke-dasharray="6,3" marker-end="url(#arrow-gcp)"/>
+
+  <!-- ===================== AWS COLUMN ===================== -->
+  <!-- AWS Provider Box -->
+  <rect x="60" y="290" width="280" height="90" rx="12" fill="#1A1A0A" stroke="#FF9900" stroke-width="2"/>
+  <!-- AWS Logo -->
+  <rect x="75" y="305" width="50" height="50" rx="8" fill="#FF9900"/>
+  <text x="100" y="337" text-anchor="middle" font-family="Arial Black, sans-serif" font-size="13" font-weight="900" fill="#1A1A0A">AWS</text>
+  <text x="145" y="325" font-family="Arial, sans-serif" font-size="15" font-weight="bold" fill="#FF9900">AWS Provider</text>
+  <text x="145" y="345" font-family="Arial, sans-serif" font-size="11" fill="#888">Region: us-east-1</text>
+  <text x="145" y="362" font-family="Arial, sans-serif" font-size="11" fill="#888">Account: 712242347429</text>
+
+  <!-- Arrow AWS Provider to S3 -->
+  <line x1="200" y1="380" x2="200" y2="440" stroke="#FF9900" stroke-width="1.5" marker-end="url(#arrow-aws)"/>
+
+  <!-- AWS S3 Bucket -->
+  <rect x="60" y="440" width="280" height="90" rx="12" fill="#1A1A0A" stroke="#3F8624" stroke-width="2"/>
+  <!-- S3 Logo -->
+  <rect x="75" y="455" width="50" height="50" rx="8" fill="#3F8624"/>
+  <text x="100" y="487" text-anchor="middle" font-family="Arial Black, sans-serif" font-size="12" font-weight="900" fill="white">S3</text>
+  <text x="145" y="475" font-family="Arial, sans-serif" font-size="15" font-weight="bold" fill="#3F8624">S3 Bucket</text>
+  <text x="145" y="495" font-family="Arial, sans-serif" font-size="11" fill="#888">devops-multicloud-aws-</text>
+  <text x="145" y="512" font-family="Arial, sans-serif" font-size="11" fill="#888">7631158a</text>
+
+  <!-- Arrow S3 to IAM -->
+  <line x1="200" y1="530" x2="200" y2="590" stroke="#FF9900" stroke-width="1.5" marker-end="url(#arrow-aws)"/>
+
+  <!-- AWS IAM -->
+  <rect x="60" y="590" width="280" height="90" rx="12" fill="#1A1A0A" stroke="#DD344C" stroke-width="2"/>
+  <!-- IAM Logo -->
+  <rect x="75" y="605" width="50" height="50" rx="8" fill="#DD344C"/>
+  <text x="100" y="637" text-anchor="middle" font-family="Arial Black, sans-serif" font-size="11" font-weight="900" fill="white">IAM</text>
+  <text x="145" y="625" font-family="Arial, sans-serif" font-size="15" font-weight="bold" fill="#DD344C">IAM Role</text>
+  <text x="145" y="645" font-family="Arial, sans-serif" font-size="11" fill="#888">Terraform Access</text>
+  <text x="145" y="662" font-family="Arial, sans-serif" font-size="11" fill="#888">modules/aws/main.tf</text>
+
+  <!-- AWS Label -->
+  <rect x="60" y="700" width="280" height="35" rx="8" fill="#FF9900" fill-opacity="0.15" stroke="#FF9900" stroke-width="1"/>
+  <text x="200" y="722" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#FF9900">Amazon Web Services</text>
+
+  <!-- ===================== AZURE COLUMN ===================== -->
+  <!-- Azure Provider Box -->
+  <rect x="460" y="290" width="280" height="90" rx="12" fill="#0A0A1A" stroke="#0078D4" stroke-width="2"/>
+  <!-- Azure Logo -->
+  <rect x="475" y="305" width="50" height="50" rx="8" fill="#0078D4"/>
+  <text x="500" y="337" text-anchor="middle" font-family="Arial Black, sans-serif" font-size="11" font-weight="900" fill="white">AZ</text>
+  <text x="545" y="325" font-family="Arial, sans-serif" font-size="15" font-weight="bold" fill="#0078D4">Azure Provider</text>
+  <text x="545" y="345" font-family="Arial, sans-serif" font-size="11" fill="#888">Location: Denmark East</text>
+  <text x="545" y="362" font-family="Arial, sans-serif" font-size="11" fill="#888">Sub: 306577a9-xxxx</text>
+
+  <!-- Arrow Azure Provider to Storage -->
+  <line x1="600" y1="380" x2="600" y2="440" stroke="#0078D4" stroke-width="1.5" marker-end="url(#arrow-azure)"/>
+
+  <!-- Azure Storage Account -->
+  <rect x="460" y="440" width="280" height="90" rx="12" fill="#0A0A1A" stroke="#0078D4" stroke-width="2"/>
+  <rect x="475" y="455" width="50" height="50" rx="8" fill="#0078D4"/>
+  <text x="500" y="487" text-anchor="middle" font-family="Arial Black, sans-serif" font-size="9" font-weight="900" fill="white">STG</text>
+  <text x="545" y="475" font-family="Arial, sans-serif" font-size="15" font-weight="bold" fill="#0078D4">Storage Account</text>
+  <text x="545" y="495" font-family="Arial, sans-serif" font-size="11" fill="#888">multicloudlabstore</text>
+  <text x="545" y="512" font-family="Arial, sans-serif" font-size="11" fill="#888">Standard LRS</text>
+
+  <!-- Arrow Storage to Blob -->
+  <line x1="600" y1="530" x2="600" y2="590" stroke="#0078D4" stroke-width="1.5" marker-end="url(#arrow-azure)"/>
+
+  <!-- Azure Blob Container -->
+  <rect x="460" y="590" width="280" height="90" rx="12" fill="#0A0A1A" stroke="#50E6FF" stroke-width="2"/>
+  <rect x="475" y="605" width="50" height="50" rx="8" fill="#50E6FF"/>
+  <text x="500" y="637" text-anchor="middle" font-family="Arial Black, sans-serif" font-size="9" font-weight="900" fill="#0A0A1A">BLOB</text>
+  <text x="545" y="625" font-family="Arial, sans-serif" font-size="15" font-weight="bold" fill="#50E6FF">Blob Container</text>
+  <text x="545" y="645" font-family="Arial, sans-serif" font-size="11" fill="#888">app-logs</text>
+  <text x="545" y="662" font-family="Arial, sans-serif" font-size="11" fill="#888">modules/azure/main.tf</text>
+
+  <!-- Azure Label -->
+  <rect x="460" y="700" width="280" height="35" rx="8" fill="#0078D4" fill-opacity="0.15" stroke="#0078D4" stroke-width="1"/>
+  <text x="600" y="722" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#0078D4">Microsoft Azure</text>
+
+  <!-- ===================== GCP COLUMN ===================== -->
+  <!-- GCP Provider Box -->
+  <rect x="860" y="290" width="280" height="90" rx="12" fill="#0A0A1A" stroke="#4285F4" stroke-width="2"/>
+  <!-- GCP Logo -->
+  <rect x="875" y="305" width="50" height="50" rx="8" fill="#4285F4"/>
+  <text x="900" y="337" text-anchor="middle" font-family="Arial Black, sans-serif" font-size="11" font-weight="900" fill="white">GCP</text>
+  <text x="945" y="325" font-family="Arial, sans-serif" font-size="15" font-weight="bold" fill="#4285F4">GCP Provider</text>
+  <text x="945" y="345" font-family="Arial, sans-serif" font-size="11" fill="#888">Region: asia-south1</text>
+  <text x="945" y="362" font-family="Arial, sans-serif" font-size="11" fill="#888">devops-multicloud-lab</text>
+
+  <!-- Arrow GCP Provider to Bucket -->
+  <line x1="1000" y1="380" x2="1000" y2="440" stroke="#4285F4" stroke-width="1.5" marker-end="url(#arrow-gcp)"/>
+
+  <!-- GCP Storage Bucket -->
+  <rect x="860" y="440" width="280" height="90" rx="12" fill="#0A0A1A" stroke="#4285F4" stroke-width="2"/>
+  <rect x="875" y="455" width="50" height="50" rx="8" fill="#4285F4"/>
+  <text x="900" y="487" text-anchor="middle" font-family="Arial Black, sans-serif" font-size="9" font-weight="900" fill="white">GCS</text>
+  <text x="945" y="475" font-family="Arial, sans-serif" font-size="15" font-weight="bold" fill="#4285F4">GCS Bucket</text>
+  <text x="945" y="495" font-family="Arial, sans-serif" font-size="11" fill="#888">devops-multicloud-gcp</text>
+  <text x="945" y="512" font-family="Arial, sans-serif" font-size="11" fill="#888">asia-south1</text>
+
+  <!-- Arrow Bucket to Service Account -->
+  <line x1="1000" y1="530" x2="1000" y2="590" stroke="#4285F4" stroke-width="1.5" marker-end="url(#arrow-gcp)"/>
+
+  <!-- GCP Service Account -->
+  <rect x="860" y="590" width="280" height="90" rx="12" fill="#0A0A1A" stroke="#34A853" stroke-width="2"/>
+  <rect x="875" y="605" width="50" height="50" rx="8" fill="#34A853"/>
+  <text x="900" y="637" text-anchor="middle" font-family="Arial Black, sans-serif" font-size="9" font-weight="900" fill="white">SA</text>
+  <text x="945" y="625" font-family="Arial, sans-serif" font-size="15" font-weight="bold" fill="#34A853">Service Account</text>
+  <text x="945" y="645" font-family="Arial, sans-serif" font-size="11" fill="#888">Terraform Access</text>
+  <text x="945" y="662" font-family="Arial, sans-serif" font-size="11" fill="#888">modules/gcp/main.tf</text>
+
+  <!-- GCP Label -->
+  <rect x="860" y="700" width="280" height="35" rx="8" fill="#4285F4" fill-opacity="0.15" stroke="#4285F4" stroke-width="1"/>
+  <text x="1000" y="722" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#4285F4">Google Cloud Platform</text>
+
+  <!-- Footer -->
+  <text x="600" y="775" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#555">github.com/SaurabhPal · DevOps Engineer · Terraform v1.15.3</text>
+</svg>
