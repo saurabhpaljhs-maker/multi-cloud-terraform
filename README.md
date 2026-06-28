@@ -2,6 +2,7 @@
 
 A clean, modular Terraform project designed to spin up cloud storage infrastructure across AWS, Azure, and Google Cloud Platform (GCP) simultaneously. Built with a strict multi-tier modular architecture, this codebase ensures each cloud environment remains decoupled, highly reusable, and easy to maintain.
 
+---
 
 ##  Architecture Overview
 
@@ -21,10 +22,9 @@ The root module acts as the orchestrator, passing configuration variables down t
         │                     │                     │
         ▼                     ▼                     ▼
    Amazon S3          Storage Account       Cloud Storage
-    Bucket           + Blob Container         Bucket
+     Bucket           + Blob Container         Bucket
 
-````
-
+---
 
 ##  Project Structure
 
@@ -42,6 +42,7 @@ multi-cloud-terraform/
     ├── azure/           # Azure Storage & Blob resources
     └── gcp/             # GCP Cloud Storage resources
 
+---
 
 ##  Provisioned Resources
 
@@ -51,6 +52,7 @@ multi-cloud-terraform/
 | Azure | Storage Account & Blob Container | Denmark East |
 | GCP | Cloud Storage Bucket | asia-south1 |
 
+---
 
 ##  Prerequisites
 
@@ -61,6 +63,7 @@ Before executing the deployment workflow, ensure you have the following tools in
 - Azure CLI
 - Google Cloud SDK (gcloud CLI)
 
+---
 
 ##  Local Authentication Setup
 
@@ -75,6 +78,7 @@ az login
 3. Google Cloud Authentication:
 gcloud auth application-default login
 
+---
 
 ##  Deployment Workflow
 
@@ -96,6 +100,7 @@ terraform plan
 Step 4: Apply Changes
 terraform apply
 
+---
 
 ##  Output Verification
 
@@ -105,6 +110,7 @@ Upon a successful terraform apply, the terminal will display the names of the ne
 - azure_storage_account_name
 - gcp_storage_bucket_name
 
+---
 
 ##  Security Best Practices
 
