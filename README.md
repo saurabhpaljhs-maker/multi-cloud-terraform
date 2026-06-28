@@ -1,12 +1,15 @@
-Multi-Cloud Terraform Infrastructure 🌐
-Overview
+# Multi-Cloud Storage Provisioning with Terraform 
 
-This project provisions cloud storage infrastructure across AWS, Microsoft Azure, and Google Cloud Platform using Terraform. It follows a modular architecture, allowing each cloud provider to be managed independently while keeping the code reusable and easy to maintain.
+A clean, modular Terraform project designed to spin up cloud storage infrastructure across AWS, Azure, and Google Cloud Platform (GCP) simultaneously. Built with a strict multi-tier modular architecture, this codebase ensures each cloud environment remains decoupled, highly reusable, and easy to maintain.
+
+
+##  Architecture Overview
+
+The root module acts as the orchestrator, passing configuration variables down to cloud-specific sub-modules. Each module independently manages authentication and resource lifecycles for its respective cloud provider.
 
                           Developer
                               │
-                              │
-                     terraform apply
+                        terraform apply
                               │
                               ▼
                     Terraform Root Module
@@ -17,114 +20,92 @@ This project provisions cloud storage infrastructure across AWS, Microsoft Azure
    AWS Module           Azure Module          GCP Module
         │                     │                     │
         ▼                     ▼                     ▼
-   Amazon S3          Storage Account      Cloud Storage
-      Bucket          + Blob Container         Bucket
+   Amazon S3          Storage Account       Cloud Storage
+     Bucket           + Blob Container         Bucket
 
-      
-Project Structure
 
-      multi-cloud-terraform
+##  Project Structure
+
+multi-cloud-terraform/
 │
-├── main.tf
-├── variables.tf
-├── outputs.tf
-├── provider.tf
-├── terraform.tfvars
-├── .gitignore
+├── main.tf              # Main entry point (calls the cloud modules)
+├── provider.tf          # Configures cloud providers & required versions
+├── variables.tf         # Global input variables
+├── outputs.tf           # Aggregated outputs from all providers
+├── terraform.tfvars     # Local environment variables (git-ignored)
+├── .gitignore           # Excludes state files and sensitive secrets
 │
-└── modules
-    ├── aws
-    ├── azure
-    └── gcp
-
-Deployment Workflow    
-
-    Write Terraform Code
-        │
-        ▼
-terraform init
-        │
-        ▼
-terraform validate
-        │
-        ▼
-terraform plan
-        │
-        ▼
-terraform apply
-        │
-        ▼
-Resources Created in AWS, Azure and GCP
-
-| Cloud Provider | Resource                            | Region       |
-| -------------- | ----------------------------------- | ------------ |
-| AWS            | Amazon S3 Bucket                    | us-east-1    |
-| Azure          | Storage Account with Blob Container | Denmark East |
-| GCP            | Cloud Storage Bucket                | asia-south1  |
-
-Prerequisites
-
-Terraform 1.0 or later
-AWS CLI
-Azure CLI
-Google Cloud CLI
+└── modules/             # Encapsulated cloud-specific infrastructure
+    ├── aws/             # AWS S3 resources
+    ├── azure/           # Azure Storage & Blob resources
+    └── gcp/             # GCP Cloud Storage resources
 
 
-Authentication
+##  Provisioned Resources
 
-AWS
+| Cloud Provider | Managed Resource | Default Region |
+| :--- | :--- | :--- |
+| AWS | Amazon S3 Bucket | us-east-1 |
+| Azure | Storage Account & Blob Container | Denmark East |
+| GCP | Cloud Storage Bucket | asia-south1 |
 
+
+##  Prerequisites
+
+Before executing the deployment workflow, ensure you have the following tools installed locally:
+
+- Terraform (v1.0 or later)
+- AWS CLI
+- Azure CLI
+- Google Cloud SDK (gcloud CLI)
+
+
+##  Local Authentication Setup
+
+You must authenticate with each cloud provider's CLI terminal before running the Terraform deployment:
+
+1. AWS Authentication:
 aws configure
 
-Azure
-
+2. Azure Authentication:
 az login
 
-Google Cloud
-
+3. Google Cloud Authentication:
 gcloud auth application-default login
 
-Deployment Steps
 
-Clone the repository.
-Open the project directory.
-Run Terraform initialization.
-Validate the configuration.
-Review the execution plan.
-Apply the infrastructure.
-Verify that resources are created in all three cloud providers.
+##  Deployment Workflow
 
-Outputs
+Follow these step-by-step commands to initialize, validate, review, and provision your multi-cloud infrastructure:
 
-AWS S3 Bucket Name
-Azure Storage Account Name
-GCP Storage Bucket Name
+Write/Edit Code --> terraform init --> terraform validate --> terraform plan --> terraform apply
 
-Security
+Step 1: Clone & Navigate
+git clone <repository-url>
+cd multi-cloud-terraform
 
-Sensitive values are stored in the terraform.tfvars file and are excluded from Git.
-Cloud credentials are managed using the respective cloud CLIs.
-Storage resources are private by default.
-IAM and RBAC permissions are used to control access.
-The modular structure makes the project easier to maintain and extend.
+Step 2: Initialize Terraform
+terraform init
 
-Technologies Used
+Step 3: Validate & Plan
+terraform validate
+terraform plan
 
-Terraform
-AWS S3
-Azure Storage Account
-Azure Blob Storage
-Google Cloud Storage
-AWS CLI
-Azure CLI
-Google Cloud CLI
+Step 4: Apply Changes
+terraform apply
 
-Key Features
 
-Multi-Cloud Infrastructure Provisioning
-Modular Terraform Architecture
-Reusable Terraform Modules
-Infrastructure as Code (IaC)
-Secure Authentication
-Scalable Project Structure
-Easy Deployment and Cleanup
+##  Output Verification
+
+Upon a successful terraform apply, the terminal will display the names of the newly generated storage resources:
+
+- aws_s3_bucket_name
+- azure_storage_account_name
+- gcp_storage_bucket_name
+
+
+##  Security Best Practices
+
+- Secret Isolation: Local variables and credentials are hardcoded only within terraform.tfvars, which is explicitly blocked via .gitignore to prevent source-control leaks.
+- Access Control: All provisioned storage targets are configured private by default. Access permissions should be managed externally using native cloud IAM and RBAC tools.
+- Least Privilege: Ensure your localized CLI profiles have only the necessary bucket/storage creation privileges required to execute this template.
