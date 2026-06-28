@@ -15,6 +15,7 @@ A clean, modular Terraform project designed to spin up cloud storage infrastruct
 The root module acts as the orchestrator, passing configuration variables down to cloud-specific sub-modules. Each module independently manages authentication and resource lifecycles for its respective cloud provider.
 
 ```text
+
                           Developer
                               │
                         terraform apply
