@@ -4,10 +4,17 @@ A clean, modular Terraform project designed to spin up cloud storage infrastruct
 
 ---
 
+# Multi-Cloud Storage Provisioning with Terraform 🌐
+
+A clean, modular Terraform project designed to spin up cloud storage infrastructure across **AWS, Azure, and Google Cloud Platform (GCP)** simultaneously. Built with a strict multi-tier modular architecture, this codebase ensures each cloud environment remains decoupled, highly reusable, and easy to maintain.
+
+---
+
 ##  Architecture Overview
 
 The root module acts as the orchestrator, passing configuration variables down to cloud-specific sub-modules. Each module independently manages authentication and resource lifecycles for its respective cloud provider.
 
+```text
                           Developer
                               │
                         terraform apply
@@ -22,6 +29,7 @@ The root module acts as the orchestrator, passing configuration variables down t
         │                     │                     │
         ▼                     ▼                     ▼
    Amazon S3          Storage Account       Cloud Storage
+     Bucket           + Blob Container         Bucket
                        
 
 ---
