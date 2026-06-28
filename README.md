@@ -21,7 +21,9 @@ The root module acts as the orchestrator, passing configuration variables down t
         │                     │                     │
         ▼                     ▼                     ▼
    Amazon S3          Storage Account       Cloud Storage
-     Bucket           + Blob Container         Bucket
+    Bucket           + Blob Container         Bucket
+
+    
 
 
 ##  Project Structure
